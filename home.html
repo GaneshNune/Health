@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .home-container {
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 15   px;
+        }
+        .home-container h2 {
+            margin-bottom: 10px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+        }
+        form label, form input, form textarea, form button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        form input, form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        form button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+        #message {
+            margin-top: 10px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <h2>Welcome to the Home Page</h2>
+        <p>You have successfully logged in.</p>
+    </div>
+
+    <h1>Create Your Health Workshop</h1>
+    <form id="workshopForm">
+        <label for="Title">Title:</label>
+        <input type="text" id="Title" name="Title" required><br>
+        
+        <label for="Date">Date:</label>
+        <input type="date" id="Date" name="Date" required><br>
+
+        <label for="Description">Enter your description</label>
+        <textarea id="Description" name="Description" required></textarea>
+
+        <button type="submit">Create the Workshop</button>
+    </form>
+
+    <p id="message"></p>
+    
+    <script>
+        document.getElementById('workshopForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var title = document.getElementById('Title').value;
+            var date = document.getElementById('Date').value;
+            var description = document.getElementById('Description').value;
+
+            if (title && date && description) {
+                document.getElementById('message').innerText = 'Workshop "' + title + '" created successfully on ' + date + '.';
+                document.getElementById('workshopForm').reset();
+            } else {
+                document.getElementById('message').innerText = 'Please fill out all fields.';
+            }
+        });
+    </script>
+</body>
+</html>
